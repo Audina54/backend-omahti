@@ -1,0 +1,53 @@
+routes : 
+        the routes folder is pretty self-explanatory routes is basically a folder where you sinclude all of 
+    your different routes so for example if i'm creating a project which has a user so you would create a route 
+    called user sand inside of there you would define all of the different stuff that you can do with a user you 
+    can create a user you can delete a user you can update a user you can do whatever you want with the user 
+    and everything you want to do with it you insert it inside of that file so the models folder in in contrast
+
+models : 
+        is basically where you define the structure of your schemas this explanation more simply is basically where 
+    you define your database so if you're using with if you're using an sql database
+
+        it's just a way to organize your queries in a way so that you're using normal javascript and treating 
+    them as objects so basically here is where you would define those models and you would define those the 
+    database tables and everything instead of models
+
+controllers : 
+        then controllers is best is basically where you execute all of the different things you want to do with the 
+    data and it's basically where you construct you manage the data so you make the request to whatever database 
+    you create on the models and you treat that data through the controllers
+
+kesimpulan : 
+        all the logic is separated into controllers and all the queries are separated into the models and all 
+    the requests are separated into the routes and if you also have views in your project you would also 
+    know that your
+
+Routes (Penerima URL) -> Controller (Logika & Aturan) -> Models (Query SQL ke MySQL)
+
+Catatan Arsitektur Database: Program ini pakai createPool (dari mysql2/promise) ketimbang createConnection 
+    supaya server nggak gampang lemot atau putus koneksi pas banyak user akses barengan. Selain itu, cara ini 
+    bikin jalur koneksi selalu standby dan wajib dipakai buat fitur Database Transaction pas proses checkout 
+    nanti biar datanya aman.
+
+BEARER TOKEN :
+autHeader (req.headers.authorization): Amplop dari client berisi teks "Bearer <TOKEN>".
+autHeader && ... (Rem Pengaman): Cek apakah amplopnya ada. Kalau kosong (undefined), langsung berhenti agar .split() tidak bikin server crash.
+.split(' ')[1] (Pemotong Kata): Memecah teks berdasarkan spasi menjadi ["Bearer", "<TOKEN>"], lalu mengambil indeks ke-1 ("<TOKEN>" saja).
+if (!token) (Penjaga Pintu): Kalau amplop kosong atau formatnya salah (tidak ada spasi), token otomatis undefined $\rightarrow$ langsung tolak dengan status 401.
+
+Aturan Emas Biar Nggak Ketukar:
+"Apa pun yang keluar langsung dari db.query() ikut aturan Database. 
+Apa pun yang keluar dari jwt.sign() ikut aturan Kamu Sendiri."
+
+res.status(200).json(...): Sukses biasa (contoh: login berhasil, ambil data GET, update data). Khusus kasus 200, menulis res.json(...) sebenarnya sama saja hasilnya, tapi menulis res.status(200).json(...) bikin kode lebih konsisten dan jelas terbaca.
+res.status(201).json(...): Sukses membuat data baru (contoh: register akun baru, tambah produk).
+res.status(400).json(...): Input user tidak lengkap atau formatnya salah.
+res.status(401).json(...): Gagal autentikasi (email/password salah saat login, atau token JWT tidak valid).
+res.status(409).json(...): Data bentrok/duplikat (contoh: email sudah terdaftar).
+res.status(500).json(...): Terjadi error tak terduga di server/database (di dalam blok catch)
+
+
+app.get -> mengambil atau membaca database?
+app.post -> bisa digunakan untuk menambah data baru
+            atau mengirim data sensitif karena data dikirim tersebunyi
