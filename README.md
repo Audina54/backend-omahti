@@ -1,9 +1,27 @@
+## Instalasi & Konfigurasi `.env`
+
+1. Install seluruh package yang dibutuhkan:
+```bash
+npm install
+```
+
+2. Buat file `.env` di folder utama proyek dan isi variabel berikut:
+```env
+PORT=3000
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+DB_PORT=4000
+JWT_SECRET=
+```
+
 # Backend API E-Commerce (Online Shop)
 
 RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Express.js**, dan database **MySQL (TiDB Cloud)**, serta di-deploy menggunakan **Railway**.
 
 - **Base URL (Production):** `https://backend-omahti-production.up.railway.app/`
-- **File Koleksi Postman:** [`API Online Shop - Production.postman_collection.json`](./API%20Online%20Shop%20-%20Production.postman_collection.json)
+- **File Koleksi Postman:** [`postman_collection.json`](./postman_collection.json)
 
 ---
 
