@@ -1,25 +1,3 @@
-## Identitas
-- **Nama:** Audina Dwiyunita Putri
-- **NIM:** 26/587248/PA/24748
-
-## Instalasi & Konfigurasi `.env`
-
-1. Install seluruh package yang dibutuhkan:
-```bash
-npm install
-```
-
-2. Buat file `.env` di folder utama proyek dan isi variabel berikut:
-```env
-PORT=3000
-DB_HOST=
-DB_USER=
-DB_PASSWORD=
-DB_NAME=
-DB_PORT=4000
-JWT_SECRET=
-```
-
 # Backend API E-Commerce (Online Shop)
 
 RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Express.js**, dan database **MySQL (TiDB Cloud)**, serta di-deploy menggunakan **Railway**.
@@ -430,3 +408,25 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
   "message": "Pembayaran berhasil!"
 }
 ```
+
+## Instalasi & Konfigurasi `.env`
+
+1. Install seluruh package yang dibutuhkan:
+```bash
+npm install
+```
+
+2. Buat file `.env` di folder utama proyek dan isi variabel berikut:
+```env
+PORT=3000
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+DB_PORT=4000
+JWT_SECRET=
+```
+
+## Identitas
+- **Nama:** Audina Dwiyunita Putri
+- **NIM:** 26/587248/PA/24748
