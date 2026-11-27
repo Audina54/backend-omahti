@@ -1,3 +1,7 @@
+## Identitas
+- **Nama:** Audina Dwiyunita Putri
+- **NIM:** 26/587248/PA/24748
+
 ## Instalasi & Konfigurasi `.env`
 
 1. Install seluruh package yang dibutuhkan:
