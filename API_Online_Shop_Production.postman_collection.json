@@ -1,0 +1,2675 @@
+{
+  "info": {
+    "_postman_id": "f311c5cf-6a9e-48c4-a325-c5f23c562734",
+    "name": "API Online Shop - Production",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60452709",
+    "_collection_link": "https://go.postman.co/collection/60452709-f311c5cf-6a9e-48c4-a325-c5f23c562734?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. Penjual",
+      "item": [
+        {
+          "name": "Register Penjual",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"Username\": \"budi_penjual\",\r\n  \"Email\": \"budi@gmail.com\",\r\n  \"Password\": \"password123\",\r\n  \"NomorHandphone\": \"08123456789\",\r\n  \"Alamat\": \"Jl. Merdeka No. 10, Jakarta\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/user/register",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "user",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register Penjual",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"Username\": \"budi_penjual\",\r\n  \"Email\": \"budi@gmail.com\",\r\n  \"Password\": \"password123\",\r\n  \"NomorHandphone\": \"08123456789\",\r\n  \"Alamat\": \"Jl. Merdeka No. 10, Jakarta\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/user/register",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:34:56 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"23-bc4pbK+E+7sobWqIEpopL/Rb9KU\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "yKMHSu9gQ-qSy0kLH4GxDA"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "35"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Registerasi berhasil!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login Penjual",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const response = pm.response.json();\r\n\r\nif (response.token) {\r\n    pm.collectionVariables.set(\"token\", response.token);\r\n    pm.environment.set(\"token\", response.token);\r\n    console.log(\"Token tersimpan:\", response.token);\r\n}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"Email\": \"budi@gmail.com\",\r\n  \"Password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/user/login",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login Penjual",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"Email\": \"budi@gmail.com\",\r\n  \"Password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/user/login",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:55:27 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"122-hk18w71ghfY8bUPE7Kq5LntWhww\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "N-px_c9cTeieVY2fFFmdQQ"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "vary",
+                  "value": "accept-encoding"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Login berhasil\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJidWRpQGdtYWlsLmNvbSIsInJvbGUiOiJwZW1iZWxpIiwiaWF0IjoxNzk1ODY2OTI4LCJleHAiOjE3OTU5NTMzMjh9.nRA8CEnRQSAxe6gDkihToIlETK6GIvxgVBqNT3msgxU\",\n  \"user\": {\n    \"id\": 1,\n    \"email\": \"budi@gmail.com\",\n    \"role\": \"pembeli\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Profil Penjual",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/user/profile",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Profil Penjual",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/user/profile",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "user",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:44:49 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"64-0PBMwYnc+x3EqqY2Isnwa5iwwkc\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "R7z9cnw9QSmTQcKCCx5-qw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "100"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil membaca data profil\",\n  \"user\": {\n    \"id\": 1,\n    \"email\": \"budi@gmail.com\",\n    \"role\": \"pembeli\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Buat Toko",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"NamaToko\": \"Budi Elektronik\",\r\n  \"AlamatToko\": \"Jakarta Selatan\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/toko",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "toko"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Buat Toko",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaToko\": \"Budi Elektronik\",\r\n  \"AlamatToko\": \"Jakarta Selatan\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/toko",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "toko"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:45:45 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2d-RlR5t5qSs0lVjLKSR3HzS7QLHB0\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "33Klw3JcShaBPCa2BT7zVQ"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "45"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data toko berhasil ditambahkan!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Buat Kategori",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"NamaKategori\": \"Gadget & Aksesoris\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/kategori",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "kategori"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Buat Kategori",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaKategori\": \"Gadget & Aksesoris\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/kategori",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "kategori"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:46:20 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"31-tAd2XJMmfsiW2CEAsn2y9+Dkg7c\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "iUtI70QIS-ubrHwHwoOzXw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "49"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data kategori berhasil ditambahkan!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Tambah Barang",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"IdToko\": 1,\r\n  \"IdKategori\": 1,\r\n  \"NamaBarang\": \"Keyboard Mechanical RGB\",\r\n  \"HargaBarang\": 450000,\r\n  \"DeskripsiBarang\": \"Switch biru, garansi 1 tahun\",\r\n  \"StokBarang\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/barang",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "barang"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Tambah Barang",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"IdToko\": 1,\r\n  \"IdKategori\": 1,\r\n  \"NamaBarang\": \"Keyboard Mechanical RGB\",\r\n  \"HargaBarang\": 450000,\r\n  \"DeskripsiBarang\": \"Switch biru, garansi 1 tahun\",\r\n  \"StokBarang\": 10\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/barang",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:46:41 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2f-2Apowo/OM5IDIWPp17SeguwcVjY\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "0lfs1J7WQqCaBWx8Cx5-qw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "47"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.cv40"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data barang berhasil ditambahkan!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Data Toko",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/toko",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "toko"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Data Toko",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/toko",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "toko"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:47:22 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"87-DwG0nDOBrj87KXzNaSR30xv2xro\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "-eBoT15uSUesK15THn5Ytg"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "135"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data toko\",\n  \"data\": [\n    {\n      \"IdToko\": 1,\n      \"UserId\": 1,\n      \"NamaToko\": \"Budi Elektronik\",\n      \"AlamatToko\": \"Jakarta Selatan\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Edit Toko",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"NamaToko\": \"Budi Elektronik Official\",\r\n  \"AlamatToko\": \"Jakarta Pusat\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/toko/1",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "toko",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Edit Toko",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaToko\": \"Budi Elektronik Official\",\r\n  \"AlamatToko\": \"Jakarta Pusat\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/toko/1",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "toko",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:47:41 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2b-DkArxJGx6bofaY1MUaEs21ESWpU\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "Z9iLt13HSTSr0YCtqmzx2A"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "43"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data toko berhasil terupdate!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Data Kategori",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/kategori",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "kategori"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Data Kategori",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/kategori",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "kategori"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:48:10 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"6c-GFw7CCu9kiSwcFfz3NgTaNjCoPA\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "JIUV7lk_TCKT6Ea7GbGh5g"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "108"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data kategori\",\n  \"data\": [\n    {\n      \"IdKategori\": 1,\n      \"NamaKategori\": \"Gadget & Aksesoris\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Edit Kategori",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"NamaKategori\": \"Elektronik & Komputer\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/kategori/1",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "kategori",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Edit Kategori",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaKategori\": \"Elektronik & Komputer\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/kategori/1",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "kategori",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:48:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2f-lTgrQuz6a0UmSyK16hXnj3GApxE\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "os4DT6XNRKKA6kocGbGh5g"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "47"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.57w5"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data kategori berhasil terupdate!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Data Barang",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/barang",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "barang"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Data Barang",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/barang",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:48:48 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"128-G7Rut5o1aj9WrzZUWXMiXM+t3/g\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "HVDbqBWvS4CWHVGNozsQ6Q"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.cv40"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "vary",
+                  "value": "accept-encoding"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data barang\",\n  \"data\": [\n    {\n      \"IdBarang\": 1,\n      \"IdToko\": 1,\n      \"IdKategori\": 1,\n      \"NamaBarang\": \"Keyboard Mechanical RGB\",\n      \"HargaBarang\": 450000,\n      \"DeskripsiBarang\": \"Switch biru, garansi 1 tahun\",\n      \"StokBarang\": 10,\n      \"NamaToko\": \"Budi Elektronik Official\",\n      \"NamaKategori\": \"Elektronik & Komputer\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Edit Barang",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"IdKategori\": 1,\r\n  \"NamaBarang\": \"Keyboard Mechanical RGB Pro\",\r\n  \"HargaBarang\": 500000,\r\n  \"DeskripsiBarang\": \"Switch merah, garansi 1 tahun\",\r\n  \"StokBarang\": 15\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/barang/1",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "barang",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Edit Barang",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"IdKategori\": 1,\r\n  \"NamaBarang\": \"Keyboard Mechanical RGB Pro\",\r\n  \"HargaBarang\": 500000,\r\n  \"DeskripsiBarang\": \"Switch merah, garansi 1 tahun\",\r\n  \"StokBarang\": 15\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/barang/1",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:49:15 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2d-2YQ8mj5bAvtjXm9mq+fz5/tyZo0\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "HhHHgmXIR9iM9qbbwoOzXw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "45"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data barang berhasil terupdate!\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Pembeli",
+      "item": [
+        {
+          "name": "Register Pembeli",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"Username\": \"ani_pembeli\",\r\n  \"Email\": \"ani@gmail.com\",\r\n  \"Password\": \"password123\",\r\n  \"NomorHandphone\": \"08987654321\",\r\n  \"Alamat\": \"Jl. Sudirman No. 25, Bandung\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/user/register",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "user",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Register Pembeli",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"Username\": \"ani_pembeli\",\r\n  \"Email\": \"ani@gmail.com\",\r\n  \"Password\": \"password123\",\r\n  \"NomorHandphone\": \"08987654321\",\r\n  \"Alamat\": \"Jl. Sudirman No. 25, Bandung\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/user/register",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:49:39 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"23-bc4pbK+E+7sobWqIEpopL/Rb9KU\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "CWTm9_MQRcGktpd6ezItjw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "35"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.57w5"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Registerasi berhasil!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login Pembeli",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const response = pm.response.json();\r\n\r\nif (response.token) {\r\n    pm.collectionVariables.set(\"token\", response.token);\r\n    pm.environment.set(\"token\", response.token);\r\n    console.log(\"Token tersimpan:\", response.token);\r\n}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"Email\": \"ani@gmail.com\",\r\n  \"Password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/user/login",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login Pembeli",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"Email\": \"ani@gmail.com\",\r\n  \"Password\": \"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/user/login",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:50:31 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"129-D71uOtWblnxafRHp2BGDRSGw5Yg\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "-uYMX3saT6yddQsTezItjw"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "vary",
+                  "value": "accept-encoding"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Login berhasil\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzAwMDEsImVtYWlsIjoiYW5pQGdtYWlsLmNvbSIsInJvbGUiOiJwZW1iZWxpIiwiaWF0IjoxNzk1ODY2NjMzLCJleHAiOjE3OTU5NTMwMzN9.u8iWJSC79voTKz36IIyX-g1RvXlnVTauFnCn8II4VfQ\",\n  \"user\": {\n    \"id\": 30001,\n    \"email\": \"ani@gmail.com\",\n    \"role\": \"pembeli\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Data Barang",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/barang",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "barang"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Data Barang",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/barang",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:51:04 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"12d-zg/KT+3fG9rPcvuMwZJGoFdbqiw\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "IOcUvpUHSP2KfL608u2xcg"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "vary",
+                  "value": "accept-encoding"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data barang\",\n  \"data\": [\n    {\n      \"IdBarang\": 1,\n      \"IdToko\": 1,\n      \"IdKategori\": 1,\n      \"NamaBarang\": \"Keyboard Mechanical RGB Pro\",\n      \"HargaBarang\": 500000,\n      \"DeskripsiBarang\": \"Switch merah, garansi 1 tahun\",\n      \"StokBarang\": 15,\n      \"NamaToko\": \"Budi Elektronik Official\",\n      \"NamaKategori\": \"Elektronik & Komputer\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Buat Pembelian",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"TanggalPembelian\": \"2026-11-28\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/pembelian",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "pembelian"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Buat Pembelian",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"TanggalPembelian\": \"2026-11-28\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/pembelian",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "pembelian"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:51:41 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"42-kPVH31T04bicGGIeTYmc6/Qpt3E\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "1qsTbQ3FQzyrNgp_Cx5-qw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "66"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.aghq"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data pembelian berhasil ditambahkan!\",\n  \"IdPembelian\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Daftar Pembelian",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/pembelian",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "pembelian"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Daftar Pembelian",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/pembelian",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "pembelian"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:53:57 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"87-z0M0irrCzkhoPn/eSwRI5ub7sJo\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "gpdrYHB_Soq2hB2gFFmdQQ"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "135"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.48ys"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data pembelian\",\n  \"data\": [\n    {\n      \"IdPembelian\": 1,\n      \"UserId\": 30001,\n      \"TanggalPembelian\": \"2026-11-28T00:00:00.000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Buat Detail-Pembelian",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"IdPembelian\": 1,\r\n  \"IdBarang\": 1,\r\n  \"JumlahBarang\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/detail-pembelian",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "detail-pembelian"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Buat Detail-Pembelian",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"IdPembelian\": 1,\r\n  \"IdBarang\": 1,\r\n  \"JumlahBarang\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/detail-pembelian",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "detail-pembelian"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:54:19 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"30-yWY+UaSRwjZLlndfaRp/LEwEtgg\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "xrYr6TbGRIyK0eC-FFmdQQ"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "48"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Detail pembelian berhasil terbuat!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Detail-Pembelian",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/detail-pembelian/1",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "detail-pembelian",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Detail-Pembelian",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/detail-pembelian/1",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "detail-pembelian",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:54:35 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"be-yR5TlnkXX+QsxAv4lqziKEX840o\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "na1s2cA7QOGbJ1w2BhdwDg"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "190"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.57w5"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data pembelian\",\n  \"data\": [\n    {\n      \"IdPembelian\": 1,\n      \"IdBarang\": 1,\n      \"JumlahBarang\": 2,\n      \"JumlahHarga\": 1000000,\n      \"NamaBarang\": \"Keyboard Mechanical RGB Pro\",\n      \"HargaBarang\": 500000\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Buat Pembayaran",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"IdPembelian\": 1,\r\n  \"MetodePembayaran\": \"Transfer Bank BCA\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}api/pembayaran",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "pembayaran"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Buat Pembayaran",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"IdPembelian\": 1,\r\n  \"MetodePembayaran\": \"Transfer Bank BCA\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/pembayaran",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "pembayaran"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:54:56 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"22-7SCDtQMEsR6Ng3zsF5aLUidj4uY\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "uJb-EM6vQ7apX9uUBT7zVQ"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "34"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.cv40"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Pembayaran berhasil!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Membaca Pembayaran",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/pembayaran",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "pembayaran"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Membaca Pembayaran",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/pembayaran",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "pembayaran"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:55:08 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"c7-wRYM0Gdn9LKw5rtfMBj7XxV+/OA\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "ybqI1F0ETnOjIAmYAax-fw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "199"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.48ys"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Berhasil mengambil data pembayaran\",\n  \"data\": [\n    {\n      \"IdPembayaran\": 1,\n      \"IdPembelian\": 1,\n      \"MetodePembayaran\": \"Transfer Bank BCA\",\n      \"JumlahHarga\": 1000000,\n      \"TanggalPembelian\": \"2026-11-28T00:00:00.000Z\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Delete",
+      "item": [
+        {
+          "name": "Membuat Dummy",
+          "item": [
+            {
+              "name": "buat toko",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaToko\": \"Toko Dummy Hapus\",\r\n  \"AlamatToko\": \"Bandung\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/toko",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "toko"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "buat toko",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"NamaToko\": \"Toko Dummy Hapus\",\r\n  \"AlamatToko\": \"Bandung\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{base_url}}api/toko",
+                      "host": [
+                        "{{base_url}}api"
+                      ],
+                      "path": [
+                        "toko"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 28 Nov 2026 11:55:48 GMT"
+                    },
+                    {
+                      "key": "etag",
+                      "value": "W/\"2d-RlR5t5qSs0lVjLKSR3HzS7QLHB0\""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "railway-hikari"
+                    },
+                    {
+                      "key": "x-powered-by",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "x-railway-request-id",
+                      "value": "7SJMeAsNStyPAGGpAax-fw"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "45"
+                    },
+                    {
+                      "key": "x-hikari-trace",
+                      "value": "jfk1.pqzh"
+                    },
+                    {
+                      "key": "x-railway-edge",
+                      "value": "jfk1"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"message\": \"Data toko berhasil ditambahkan!\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "buat kategori",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"NamaKategori\": \"Kategori Dummy Hapus\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/kategori",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "kategori"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "buat kategori",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"NamaKategori\": \"Kategori Dummy Hapus\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{base_url}}api/kategori",
+                      "host": [
+                        "{{base_url}}api"
+                      ],
+                      "path": [
+                        "kategori"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 28 Nov 2026 11:56:09 GMT"
+                    },
+                    {
+                      "key": "etag",
+                      "value": "W/\"31-tAd2XJMmfsiW2CEAsn2y9+Dkg7c\""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "railway-hikari"
+                    },
+                    {
+                      "key": "x-powered-by",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "x-railway-request-id",
+                      "value": "tEvrwLmRTJW5sSVlH4GxDA"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "49"
+                    },
+                    {
+                      "key": "x-hikari-trace",
+                      "value": "jfk1.57w5"
+                    },
+                    {
+                      "key": "x-railway-edge",
+                      "value": "jfk1"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"message\": \"Data kategori berhasil ditambahkan!\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "tambah barang",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"IdToko\": 2,\r\n  \"IdKategori\": 2,\r\n  \"NamaBarang\": \"Barang Dummy Hapus\",\r\n  \"HargaBarang\": 10000,\r\n  \"DeskripsiBarang\": \"Produk uji coba hapus\",\r\n  \"StokBarang\": 5\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}api/barang",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "tambah barang",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"IdToko\": 2,\r\n  \"IdKategori\": 2,\r\n  \"NamaBarang\": \"Barang Dummy Hapus\",\r\n  \"HargaBarang\": 10000,\r\n  \"DeskripsiBarang\": \"Produk uji coba hapus\",\r\n  \"StokBarang\": 5\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{base_url}}api/barang",
+                      "host": [
+                        "{{base_url}}api"
+                      ],
+                      "path": [
+                        "barang"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json; charset=utf-8"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 28 Nov 2026 11:56:42 GMT"
+                    },
+                    {
+                      "key": "etag",
+                      "value": "W/\"2f-2Apowo/OM5IDIWPp17SeguwcVjY\""
+                    },
+                    {
+                      "key": "Server",
+                      "value": "railway-hikari"
+                    },
+                    {
+                      "key": "x-powered-by",
+                      "value": "Express"
+                    },
+                    {
+                      "key": "x-railway-request-id",
+                      "value": "EjUrB4AaRSC52aWWwoOzXw"
+                    },
+                    {
+                      "key": "Content-Length",
+                      "value": "47"
+                    },
+                    {
+                      "key": "x-hikari-trace",
+                      "value": "jfk1.57w5"
+                    },
+                    {
+                      "key": "x-railway-edge",
+                      "value": "jfk1"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"message\": \"Data barang berhasil ditambahkan!\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Delete Barang",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/barang/2",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "barang",
+                "2"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Barang",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/barang/2",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "barang",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:57:14 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2b-Gff6mi0grdsbwnQPaLzsw7MLT7Q\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "ZVT5WmmRSRylZqUcO8poTA"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "43"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.pqzh"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data barang berhasil dihapus!\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Kategori",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/kategori/2",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "kategori",
+                "2"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Kategori",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/kategori/2",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "kategori",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:57:30 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"2c-kDB9KxTscKNrw62WY1i4t/VwFZc\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "3zYmhgeVTUq_q63oezItjw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "44"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.48ys"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data kategori berhasil dihapus\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Toko",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}api/toko/2",
+              "host": [
+                "{{base_url}}api"
+              ],
+              "path": [
+                "toko",
+                "2"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Toko",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}api/toko/2",
+                  "host": [
+                    "{{base_url}}api"
+                  ],
+                  "path": [
+                    "toko",
+                    "2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 28 Nov 2026 11:58:04 GMT"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"29-1humZbj+4rW28tViAFYv+4kyVzc\""
+                },
+                {
+                  "key": "Server",
+                  "value": "railway-hikari"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "x-railway-request-id",
+                  "value": "n1FggdQqRsaMnO8zAax-fw"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "41"
+                },
+                {
+                  "key": "x-hikari-trace",
+                  "value": "jfk1.48ys"
+                },
+                {
+                  "key": "x-railway-edge",
+                  "value": "jfk1"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Data toko berhasil dihapus!\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cek Server",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}",
+          "host": [
+            "{{base_url}}"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Cek Server",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}",
+              "host": [
+                "{{base_url}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 28 Nov 2026 11:34:10 GMT"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2f-dgKNk07VSJiaSV0sVkaT0uw9zTM\""
+            },
+            {
+              "key": "Server",
+              "value": "railway-hikari"
+            },
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "x-railway-request-id",
+              "value": "3cUGGvFBTZGYDplXqmzx2A"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "x-hikari-trace",
+              "value": "jfk1.48ys"
+            },
+            {
+              "key": "x-railway-edge",
+              "value": "jfk1"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"Message\": \"API E-Commerce Online Shop aktif!\"\n}"
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Express.js**, dan database **MySQL (TiDB Cloud)**, serta di-deploy menggunakan **Railway**.
 
 - **Base URL (Production):** `https://backend-omahti-production.up.railway.app/`
-- **File Koleksi Postman:** [`postman_collection.json`](./postman_collection.json)
+- **File Koleksi Postman:** [`API_Online_Shop_Production.postman_collection.json`](./API_Online_Shop_Production.postman_collection.json)
 
 ---
 
@@ -16,15 +16,15 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 
 ---
 
-## Daftar Lengkap Endpoint API
+## Dokumentasi Endpoint API (Koleksi Postman)
 
-### 0. Root / Health Check
+### 0. Cek Server
 
 | Method | Endpoint | Deskripsi | Auth |
 | :--- | :--- | :--- | :---: |
 | `GET` | `/` | Mengecek status server API aktif | - |
 
-#### `GET /`
+#### `GET /` (Cek Server)
 **Response (`200 OK`):**
 ```json
 {
@@ -34,34 +34,24 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 
 ---
 
-### 1. Autentikasi & Profil (`User`)
+### 1. Penjual
 
-| Method | Endpoint | Deskripsi | Auth |
+| Method | Endpoint | Nama Request | Auth |
 | :--- | :--- | :--- | :---: |
-| `POST` | `/api/user/register` | Registrasi akun pengguna baru | - |
-| `POST` | `/api/user/login` | Login pengguna untuk mendapatkan token JWT | - |
-| `GET` | `/api/user/profile` | Membaca data profil pengguna yang sedang login | Bearer Token |
+| `POST` | `/api/user/login` | Login Penjual | - |
+| `POST` | `/api/toko` | Buat Toko | Bearer Token |
+| `POST` | `/api/user/register` | Register Penjual | - |
+| `GET` | `/api/barang` | Membaca Data Barang | - |
+| `PUT` | `/api/barang/:IdBarang` | Edit Barang | Bearer Token |
+| `GET` | `/api/kategori` | Membaca Data Kategori | - |
+| `GET` | `/api/toko` | Membaca Data Toko | - |
+| `POST` | `/api/barang` | Tambah Barang | Bearer Token |
+| `PUT` | `/api/toko/:IdToko` | Edit Toko | Bearer Token |
+| `PUT` | `/api/kategori/:IdKategori` | Edit Kategori | Bearer Token |
+| `POST` | `/api/kategori` | Buat Kategori | Bearer Token |
+| `GET` | `/api/user/profile` | Membaca Profil Penjual | Bearer Token |
 
-#### `POST /api/user/register`
-**Request Body:**
-```json
-{
-  "Username": "ani_pembeli",
-  "Email": "ani@gmail.com",
-  "Password": "password123",
-  "NomorHandphone": "08987654321",
-  "Alamat": "Jl. Sudirman No. 25, Bandung"
-}
-```
-
-**Response (`201 Created`):**
-```json
-{
-  "message": "Registerasi berhasil!"
-}
-```
-
-#### `POST /api/user/login`
+#### 1.1 Login Penjual — `POST /api/user/login`
 **Request Body:**
 ```json
 {
@@ -69,7 +59,6 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
   "Password": "password123"
 }
 ```
-
 **Response (`200 OK`):**
 ```json
 {
@@ -83,40 +72,93 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `GET /api/user/profile`
-**Response (`200 OK`):**
+#### 1.2 Buat Toko — `POST /api/toko`
+**Request Body:**
 ```json
 {
-  "message": "Berhasil membaca data profil",
-  "user": {
-    "id": 1,
-    "email": "budi@gmail.com",
-    "role": "pembeli"
-  }
+  "NamaToko": "Budi Elektronik",
+  "AlamatToko": "Jakarta Selatan"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Data toko berhasil ditambahkan!"
 }
 ```
 
----
+#### 1.3 Register Penjual — `POST /api/user/register`
+**Request Body:**
+```json
+{
+  "Username": "budi_penjual",
+  "Email": "budi@gmail.com",
+  "Password": "password123",
+  "NomorHandphone": "08123456789",
+  "Alamat": "Jl. Merdeka No. 10, Jakarta"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Registerasi berhasil!"
+}
+```
 
-### 2. Master Data (`Toko`, `Kategori`, `Barang`)
-> **Catatan:** Endpoint `POST`, `PUT`, dan `DELETE` memerlukan Header `Authorization: Bearer <token>`. Pengubahan dan penghapusan data `Toko` maupun `Barang` divalidasi berdasarkan kepemilikan `UserId`.
+#### 1.4 Membaca Data Barang — `GET /api/barang`
+**Response (`200 OK`):**
+```json
+{
+  "message": "Berhasil mengambil data barang",
+  "data": [
+    {
+      "IdBarang": 1,
+      "IdToko": 1,
+      "IdKategori": 1,
+      "NamaBarang": "Keyboard Mechanical RGB",
+      "HargaBarang": 450000,
+      "DeskripsiBarang": "Switch biru, garansi 1 tahun",
+      "StokBarang": 10,
+      "NamaToko": "Budi Elektronik Official",
+      "NamaKategori": "Elektronik & Komputer"
+    }
+  ]
+}
+```
 
-| Method | Endpoint | Deskripsi | Auth |
-| :--- | :--- | :--- | :---: |
-| `GET` | `/api/toko` | Menampilkan seluruh data toko | - |
-| `POST` | `/api/toko` | Menambahkan data toko baru | Bearer Token |
-| `PUT` | `/api/toko/:IdToko` | Memperbarui data toko berdasarkan ID | Bearer Token |
-| `DELETE` | `/api/toko/:IdToko` | Menghapus data toko berdasarkan ID | Bearer Token |
-| `GET` | `/api/kategori` | Menampilkan seluruh kategori barang | - |
-| `POST` | `/api/kategori` | Menambahkan kategori barang baru | Bearer Token |
-| `PUT` | `/api/kategori/:IdKategori` | Memperbarui nama kategori berdasarkan ID | Bearer Token |
-| `DELETE` | `/api/kategori/:IdKategori` | Menghapus kategori berdasarkan ID | Bearer Token |
-| `GET` | `/api/barang` | Menampilkan seluruh daftar barang beserta stok | - |
-| `POST` | `/api/barang` | Menambahkan produk/barang baru | Bearer Token |
-| `PUT` | `/api/barang/:IdBarang` | Memperbarui data produk/barang berdasarkan ID | Bearer Token |
-| `DELETE` | `/api/barang/:IdBarang` | Menghapus produk/barang berdasarkan ID | Bearer Token |
+#### 1.5 Edit Barang — `PUT /api/barang/1`
+**Request Body:**
+```json
+{
+  "IdKategori": 1,
+  "NamaBarang": "Keyboard Mechanical RGB Pro",
+  "HargaBarang": 500000,
+  "DeskripsiBarang": "Switch merah, garansi 1 tahun",
+  "StokBarang": 15
+}
+```
+**Response (`200 OK`):**
+```json
+{
+  "message": "Data barang berhasil terupdate!"
+}
+```
 
-#### `GET /api/toko`
+#### 1.6 Membaca Data Kategori — `GET /api/kategori`
+**Response (`200 OK`):**
+```json
+{
+  "message": "Berhasil mengambil data kategori",
+  "data": [
+    {
+      "IdKategori": 1,
+      "NamaKategori": "Gadget & Aksesoris"
+    }
+  ]
+}
+```
+
+#### 1.7 Membaca Data Toko — `GET /api/toko`
 **Response (`200 OK`):**
 ```json
 {
@@ -132,31 +174,33 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `POST /api/toko`
+#### 1.8 Tambah Barang — `POST /api/barang`
 **Request Body:**
 ```json
 {
-  "NamaToko": "Budi Elektronik",
-  "AlamatToko": "Jakarta Selatan"
+  "IdToko": 1,
+  "IdKategori": 1,
+  "NamaBarang": "Keyboard Mechanical RGB",
+  "HargaBarang": 450000,
+  "DeskripsiBarang": "Switch biru, garansi 1 tahun",
+  "StokBarang": 10
 }
 ```
-
 **Response (`201 Created`):**
 ```json
 {
-  "message": "Data toko berhasil ditambahkan!"
+  "message": "Data barang berhasil ditambahkan!"
 }
 ```
 
-#### `PUT /api/toko/:IdToko`
-**Request Body (`PUT /api/toko/1`):**
+#### 1.9 Edit Toko — `PUT /api/toko/1`
+**Request Body:**
 ```json
 {
   "NamaToko": "Budi Elektronik Official",
   "AlamatToko": "Jakarta Pusat"
 }
 ```
-
 **Response (`200 OK`):**
 ```json
 {
@@ -164,51 +208,13 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `DELETE /api/toko/:IdToko`
-**Response (`200 OK` — `DELETE /api/toko/30001`):**
-```json
-{
-  "message": "Data toko berhasil dihapus!"
-}
-```
-
-#### `GET /api/kategori`
-**Response (`200 OK`):**
-```json
-{
-  "message": "Berhasil mengambil data kategori",
-  "data": [
-    {
-      "IdKategori": 1,
-      "NamaKategori": "Elektronik & Komputer"
-    }
-  ]
-}
-```
-
-#### `POST /api/kategori`
+#### 1.10 Edit Kategori — `PUT /api/kategori/1`
 **Request Body:**
-```json
-{
-  "NamaKategori": "Gadget & Aksesoris"
-}
-```
-
-**Response (`201 Created`):**
-```json
-{
-  "message": "Data kategori berhasil ditambahkan!"
-}
-```
-
-#### `PUT /api/kategori/:IdKategori`
-**Request Body (`PUT /api/kategori/1`):**
 ```json
 {
   "NamaKategori": "Elektronik & Komputer"
 }
 ```
-
 **Response (`200 OK`):**
 ```json
 {
@@ -216,15 +222,89 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `DELETE /api/kategori/:IdKategori`
-**Response (`200 OK` — `DELETE /api/kategori/30001`):**
+#### 1.11 Buat Kategori — `POST /api/kategori`
+**Request Body:**
 ```json
 {
-  "message": "Data kategori berhasil dihapus"
+  "NamaKategori": "Gadget & Aksesoris"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Data kategori berhasil ditambahkan!"
 }
 ```
 
-#### `GET /api/barang`
+#### 1.12 Membaca Profil Penjual — `GET /api/user/profile`
+**Response (`200 OK`):**
+```json
+{
+  "message": "Berhasil membaca data profil",
+  "user": {
+    "id": 1,
+    "email": "budi@gmail.com",
+    "role": "pembeli"
+  }
+}
+```
+
+---
+
+### 2. Pembeli
+
+| Method | Endpoint | Nama Request | Auth |
+| :--- | :--- | :--- | :---: |
+| `POST` | `/api/user/register` | Register Pembeli | - |
+| `POST` | `/api/user/login` | Login Pembeli | - |
+| `GET` | `/api/barang` | Membaca Data Barang | - |
+| `POST` | `/api/pembelian` | Buat Pembelian | Bearer Token |
+| `GET` | `/api/pembelian` | Membaca Daftar Pembelian | Bearer Token |
+| `POST` | `/api/detail-pembelian` | Buat Detail-Pembelian | Bearer Token |
+| `GET` | `/api/detail-pembelian/:IdPembelian` | Membaca Detail-Pembelian | Bearer Token |
+| `POST` | `/api/pembayaran` | Buat Pembayaran | Bearer Token |
+| `GET` | `/api/pembayaran` | Membaca Pembayaran | Bearer Token |
+
+#### 2.1 Register Pembeli — `POST /api/user/register`
+**Request Body:**
+```json
+{
+  "Username": "ani_pembeli",
+  "Email": "ani@gmail.com",
+  "Password": "password123",
+  "NomorHandphone": "08987654321",
+  "Alamat": "Jl. Sudirman No. 25, Bandung"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Registerasi berhasil!"
+}
+```
+
+#### 2.2 Login Pembeli — `POST /api/user/login`
+**Request Body:**
+```json
+{
+  "Email": "ani@gmail.com",
+  "Password": "password123"
+}
+```
+**Response (`200 OK`):**
+```json
+{
+  "message": "Login berhasil",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": 30001,
+    "email": "ani@gmail.com",
+    "role": "pembeli"
+  }
+}
+```
+
+#### 2.3 Membaca Data Barang — `GET /api/barang`
 **Response (`200 OK`):**
 ```json
 {
@@ -245,96 +325,13 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `POST /api/barang`
+#### 2.4 Buat Pembelian — `POST /api/pembelian`
 **Request Body:**
 ```json
 {
-  "IdToko": 1,
-  "IdKategori": 1,
-  "NamaBarang": "Keyboard Mechanical RGB",
-  "HargaBarang": 450000,
-  "DeskripsiBarang": "Switch biru, garansi 1 tahun",
-  "StokBarang": 10
+  "TanggalPembelian": "2026-11-28"
 }
 ```
-
-**Response (`201 Created`):**
-```json
-{
-  "message": "Data barang berhasil ditambahkan!"
-}
-```
-
-#### `PUT /api/barang/:IdBarang`
-**Request Body (`PUT /api/barang/1`):**
-```json
-{
-  "IdKategori": 1,
-  "NamaBarang": "Keyboard Mechanical RGB Pro",
-  "HargaBarang": 500000,
-  "DeskripsiBarang": "Switch merah, garansi 1 tahun",
-  "StokBarang": 15
-}
-```
-
-**Response (`200 OK`):**
-```json
-{
-  "message": "Data barang berhasil terupdate!"
-}
-```
-
-#### `DELETE /api/barang/:IdBarang`
-**Response (`200 OK` — `DELETE /api/barang/30002`):**
-```json
-{
-  "message": "Data barang berhasil dihapus!"
-}
-```
-
----
-
-### 3. Transaksi (`Pembelian`, `Detail Pembelian`, `Pembayaran`)
-> **Catatan:** Seluruh endpoint transaksi memerlukan Header `Authorization: Bearer <token>` dan divalidasi berdasarkan kepemilikan transaksi pengguna.
-
-| Method | Endpoint | Deskripsi | Auth |
-| :--- | :--- | :--- | :---: |
-| `GET` | `/api/pembelian` | Menampilkan riwayat pembelian milik pengguna | Bearer Token |
-| `POST` | `/api/pembelian` | Membuat header transaksi pembelian baru | Bearer Token |
-| `GET` | `/api/detail-pembelian/:IdPembelian` | Menampilkan rincian item barang dalam satu transaksi | Bearer Token |
-| `POST` | `/api/detail-pembelian` | Menambahkan item barang ke pembelian & mengurangi stok otomatis | Bearer Token |
-| `GET` | `/api/pembayaran` | Menampilkan riwayat pembayaran milik pengguna | Bearer Token |
-| `POST` | `/api/pembayaran` | Mencatat pembayaran berdasarkan total harga detail pembelian | Bearer Token |
-
-#### `GET /api/pembelian`
-**Response (`200 OK`):**
-```json
-{
-  "message": "Berhasil mengambil data pembelian",
-  "data": [
-    {
-      "IdPembelian": 1,
-      "UserId": 2,
-      "TanggalPembelian": "2026-11-27"
-    }
-  ]
-}
-```
-
-#### `POST /api/pembelian`
-**Request Body:**
-```json
-{
-  "TanggalPembelian": "2026-11-27",
-  "items": [
-    {
-      "IdBarang": 1,
-      "JumlahBarang": 2
-    }
-  ]
-}
-```
-
 **Response (`201 Created`):**
 ```json
 {
@@ -343,24 +340,22 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `GET /api/detail-pembelian/:IdPembelian`
-**Response (`200 OK` — `GET /api/detail-pembelian/1`):**
+#### 2.5 Membaca Daftar Pembelian — `GET /api/pembelian`
+**Response (`200 OK`):**
 ```json
 {
   "message": "Berhasil mengambil data pembelian",
   "data": [
     {
-      "IdDetail": 1,
       "IdPembelian": 1,
-      "IdBarang": 1,
-      "JumlahBarang": 2,
-      "JumlahHarga": 900000
+      "UserId": 30001,
+      "TanggalPembelian": "2026-11-28T00:00:00.000Z"
     }
   ]
 }
 ```
 
-#### `POST /api/detail-pembelian`
+#### 2.6 Buat Detail-Pembelian — `POST /api/detail-pembelian`
 **Request Body:**
 ```json
 {
@@ -369,7 +364,6 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
   "JumlahBarang": 2
 }
 ```
-
 **Response (`201 Created`):**
 ```json
 {
@@ -377,7 +371,40 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
 }
 ```
 
-#### `GET /api/pembayaran`
+#### 2.7 Membaca Detail-Pembelian — `GET /api/detail-pembelian/1`
+**Response (`200 OK`):**
+```json
+{
+  "message": "Berhasil mengambil data pembelian",
+  "data": [
+    {
+      "IdPembelian": 1,
+      "IdBarang": 1,
+      "JumlahBarang": 2,
+      "JumlahHarga": 1000000,
+      "NamaBarang": "Keyboard Mechanical RGB Pro",
+      "HargaBarang": 500000
+    }
+  ]
+}
+```
+
+#### 2.8 Buat Pembayaran — `POST /api/pembayaran`
+**Request Body:**
+```json
+{
+  "IdPembelian": 1,
+  "MetodePembayaran": "Transfer Bank BCA"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Pembayaran berhasil!"
+}
+```
+
+#### 2.9 Membaca Pembayaran — `GET /api/pembayaran`
 **Response (`200 OK`):**
 ```json
 {
@@ -387,27 +414,106 @@ RESTful API untuk sistem e-commerce yang dibangun menggunakan **Node.js**, **Exp
       "IdPembayaran": 1,
       "IdPembelian": 1,
       "MetodePembayaran": "Transfer Bank BCA",
-      "JumlahHarga": 900000
+      "JumlahHarga": 1000000,
+      "TanggalPembelian": "2026-11-28T00:00:00.000Z"
     }
   ]
 }
 ```
 
-#### `POST /api/pembayaran`
+---
+
+### 3. Delete
+
+#### 3.1 Folder `Membuat Dummy`
+
+| Method | Endpoint | Nama Request | Auth |
+| :--- | :--- | :--- | :---: |
+| `POST` | `/api/toko` | buat toko | Bearer Token |
+| `POST` | `/api/kategori` | buat kategori | Bearer Token |
+| `POST` | `/api/barang` | tambah barang | Bearer Token |
+
+##### `POST /api/toko` (`buat toko`)
 **Request Body:**
 ```json
 {
-  "IdPembelian": 1,
-  "MetodePembayaran": "Transfer Bank BCA"
+  "NamaToko": "Toko Dummy Hapus",
+  "AlamatToko": "Bandung"
 }
 ```
-
 **Response (`201 Created`):**
 ```json
 {
-  "message": "Pembayaran berhasil!"
+  "message": "Data toko berhasil ditambahkan!"
 }
 ```
+
+##### `POST /api/kategori` (`buat kategori`)
+**Request Body:**
+```json
+{
+  "NamaKategori": "Kategori Dummy Hapus"
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Data kategori berhasil ditambahkan!"
+}
+```
+
+##### `POST /api/barang` (`tambah barang`)
+**Request Body:**
+```json
+{
+  "IdToko": 2,
+  "IdKategori": 2,
+  "NamaBarang": "Barang Dummy Hapus",
+  "HargaBarang": 10000,
+  "DeskripsiBarang": "Produk uji coba hapus",
+  "StokBarang": 5
+}
+```
+**Response (`201 Created`):**
+```json
+{
+  "message": "Data barang berhasil ditambahkan!"
+}
+```
+
+#### 3.2 Eksekusi Delete
+
+| Method | Endpoint | Nama Request | Auth |
+| :--- | :--- | :--- | :---: |
+| `DELETE` | `/api/barang/:IdBarang` | Delete Barang | Bearer Token |
+| `DELETE` | `/api/kategori/:IdKategori` | Delete Kategori | Bearer Token |
+| `DELETE` | `/api/toko/:IdToko` | Delete Toko | Bearer Token |
+
+##### `DELETE /api/barang/2` (Delete Barang)
+**Response (`200 OK`):**
+```json
+{
+  "message": "Data barang berhasil dihapus!"
+}
+```
+
+##### `DELETE /api/kategori/2` (Delete Kategori)
+**Response (`200 OK`):**
+```json
+{
+  "message": "Data kategori berhasil dihapus"
+}
+```
+
+##### `DELETE /api/toko/2` (Delete Toko)
+**Response (`200 OK`):**
+```json
+{
+  "message": "Data toko berhasil dihapus!"
+}
+```
+
+---
 
 ## Instalasi & Konfigurasi `.env`
 
